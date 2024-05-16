@@ -1,0 +1,116 @@
+{
+  "country": [
+    {
+      "id": "1",
+      "countryName": "Russia",
+      "singerName": "T.I.ViAl",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg",
+      "result": true
+    },
+    {
+      "id": "2",
+      "countryName": "Switzerland",
+      "singerName": "Husso",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+      "result": true
+    },
+    {
+      "id": "3",
+      "countryName": "Ireland",
+      "singerName": "Khan Terrero",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg",
+      "result": true
+    },
+    {
+      "id": "4",
+      "countryName": "Paraguay",
+      "singerName": "SS",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/188px-Flag_of_Paraguay.svg.png",
+      "result": true
+    },
+    {
+      "id": "5",
+      "countryName": "Norway",
+      "singerName": "Narmin",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/1200px-Flag_of_Norway.svg.png",
+      "result": true
+    },
+    {
+      "id": "6",
+      "countryName": "Croatia",
+      "singerName": "Alirza",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Croatia.svg/1280px-Flag_of_Croatia.svg.png",
+      "result": true
+    },
+    {
+      "id": "7",
+      "countryName": "Germany",
+      "singerName": "Fre",
+      "musicName": "Mama",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+      "result": true
+    },
+    {
+      "id": "8",
+      "countryName": "Belgium",
+      "singerName": "Sahib xxx",
+      "musicName": "Mama",
+      "flag": "https://cdn11.bigcommerce.com/s-w6fxwapwzi/images/stencil/1280x1280/products/2497/5295/2x3-belgium-flag-image__94864.1582735633.jpg",
+      "result": true
+    }
+  ],
+  "voted": [
+    {
+      "id": "87a6",
+      "countryName": "Germany"
+    },
+    {
+      "id": "7eb1",
+      "countryName": "Norway"
+    },
+    {
+      "id": "df16",
+      "countryName": "Russia"
+    },
+    {
+      "id": "0fcd",
+      "countryName": "Switzerland"
+    },
+    {
+      "id": "986b",
+      "countryName": "Belgium"
+    },
+    {
+      "id": "e1e0",
+      "countryName": "Croatia"
+    },
+    {
+      "id": "cbfc",
+      "countryName": "Ireland"
+    },
+    {
+      "id": "cd3c",
+      "countryName": "Paraguay"
+    }
+  ],
+  "puans": [
+    {
+      "id": "ce48",
+      "givinCountry": "Germany",
+      "getingCountry": "Switzerland",
+      "puan": 12
+    },
+    {
+      "id": "9339",
+      "givinCountry": "Croatia",
+      "getingCountry": "Norway",
+      "puan": 12
+    }
+  ]
+}
