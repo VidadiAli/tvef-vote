@@ -43,7 +43,7 @@ const Form = () => {
                 }
                 addVoted(element);
                 setRemoveClass('form-div-remove');
-                window.location = "https://vidadiali.github.io/esc-vote/vote"
+                window.location = "https://vidadiali.github.io/tvef-vote/vote"
             }
             else {
                 alert('Your votes already exist')
@@ -76,7 +76,7 @@ const Form = () => {
                 <p>Make Dream!</p>
 
                 <button onClick={voteNow}>Vote Now</button>
-                <NavLink to={'/esc-vote/vote'} style={{ display: 'none' }}></NavLink>
+                <NavLink to={'/tvef-vote/vote'} style={{ display: 'none' }}></NavLink>
             </form>
         </div>
     )

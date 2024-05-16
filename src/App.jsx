@@ -9,8 +9,8 @@ function App() {
   return (
     <section>
       <Routes>
-        <Route path='/esc-vote/' element={<Form />} />
-        <Route path='/esc-vote/vote' element={<Vote />} />
+        <Route path='/tvef-vote/' element={<Form />} />
+        <Route path='/tvef-vote/vote' element={<Vote />} />
       </Routes>
     </section>
   )

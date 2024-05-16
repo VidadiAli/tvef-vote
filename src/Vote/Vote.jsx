@@ -12,9 +12,9 @@ const Vote = () => {
 
 
     const callData = async () => {
-        const mainDataArray = (await axios.get('http://localhost:3000/country')).data;
+        const mainDataArray = (await axios.get('https://api-esc.onrender.com/country')).data;
         setMainData(mainDataArray);
-        const votingDataArray = (await axios.get('http://localhost:3000/voted')).data;
+        const votingDataArray = (await axios.get('https://api-esc.onrender.com/voted')).data;
         setVotingData(votingDataArray);
     }
 
@@ -25,7 +25,7 @@ const Vote = () => {
     }
 
     const addPoint = async (countrypoint) => {
-        await axios.post('http://localhost:3000/puans', countrypoint)
+        await axios.post('https://api-esc.onrender.com/puans', countrypoint)
     }
     const givePuan = (e) => {
         if (e.target.textContent == 12) {
