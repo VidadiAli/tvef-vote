@@ -22,13 +22,7 @@ const Form = () => {
     }
 
     const addVoted = async (newCountry) => {
-        const sure = confirm("Aru you sure submiting your points\nif you send it, you will can't change it!");
-        if (sure) {
-            await axios.post('https://api-esc.onrender.com/voted', newCountry)
-        }
-        else {
-            return;
-        }
+        await axios.post('https://api-esc.onrender.com/voted', newCountry)
     }
 
     useEffect(() => {

@@ -30,8 +30,14 @@ const Vote = () => {
     }
 
     const addPoint = async (countrypoint) => {
-        await axios.post('https://api-esc.onrender.com/puans', countrypoint);
-        AlertEvent("Your points saved", "rgb(15, 92, 141)");
+        const sure = confirm("Aru you sure submiting your points\nif you send it, you will can't change it!");
+        if (sure) {
+            await axios.post('https://api-esc.onrender.com/puans', countrypoint);
+            AlertEvent("Your points saved", "rgb(15, 92, 141)");
+        }
+        else {
+            return;
+        }
     }
 
 
