@@ -30,14 +30,8 @@ const Vote = () => {
     }
 
     const addPoint = async (countrypoint) => {
-        const sure = confirm("Aru you sure submiting your points\nif you send it, you will can't change it!");
-        if (sure) {
-            await axios.post('https://api-esc.onrender.com/puans', countrypoint);
-            AlertEvent("Your points saved", "rgb(15, 92, 141)");
-        }
-        else {
-            return;
-        }
+        await axios.post('https://api-esc.onrender.com/puans', countrypoint);
+        AlertEvent("Your points saved", "rgb(15, 92, 141)");
     }
 
 
@@ -201,9 +195,15 @@ const Vote = () => {
                 }
             });
             if (count1 === 0) {
-                pointsArray.forEach((f) => {
-                    addPoint(f);
-                })
+                const sure = confirm("Are you sure submiting your votes?\nIf you send it, you will can't change it!");
+                if (sure) {
+                    pointsArray.forEach((f) => {
+                        addPoint(f);
+                    })
+                }
+                else {
+                    return;
+                }
             }
             else {
                 AlertEvent("Your votes are already exist", "red");

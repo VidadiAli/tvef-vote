@@ -81,8 +81,8 @@ const Form = () => {
 
                 <p>Make Dream!</p>
 
-                <button onClick={voteNow}>Vote Now</button>
-                <NavLink to={'/tvef-vote/vote'} style={{ display: continueDisplay, textDecoration: 'none', color: 'rgb(15, 92, 141)', backgroundColor: 'yellow', textAlign: 'center', padding: '13px', fontWeight: '700', borderRadius: '10px' }} onClick={goSite}>Continue</NavLink>
+                <button onClick={voteNow}>Continue</button>
+                <NavLink to={'/tvef-vote/vote'} style={{ display: continueDisplay, textDecoration: 'none', color: 'rgb(15, 92, 141)', backgroundColor: 'yellow', textAlign: 'center', padding: '15px', fontWeight: '700', borderRadius: '10px' }} onClick={goSite}>Vote Now</NavLink>
             </form>
         </div >
     )
