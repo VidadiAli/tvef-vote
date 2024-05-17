@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom';
+import { AlertEvent } from '../alert-events/AlertEvent';
 
 
 
@@ -11,6 +12,7 @@ const Form = () => {
     const [countryNamedata, setCountryNameData] = useState([]);
     const [removeClass, setRemoveClass] = useState('');
     const [chooseCountry, setChooseCuntry] = useState('');
+    const [continueDisplay, setContinueDisplay] = useState('none')
 
     const callData = async () => {
         const dataArray = (await axios.get('https://api-esc.onrender.com/country')).data;
@@ -20,7 +22,13 @@ const Form = () => {
     }
 
     const addVoted = async (newCountry) => {
-        await axios.post('https://api-esc.onrender.com/voted', newCountry)
+        const sure = confirm("Aru you sure submiting your points\nif you send it, you will can't change it!");
+        if (sure) {
+            await axios.post('https://api-esc.onrender.com/voted', newCountry)
+        }
+        else {
+            return;
+        }
     }
 
     useEffect(() => {
@@ -41,17 +49,21 @@ const Form = () => {
                 const element = {
                     "countryName": chooseCountry
                 }
+                setContinueDisplay('inline-block');
                 addVoted(element);
-                setRemoveClass('form-div-remove');
-                window.location = "https://vidadiali.github.io/tvef-vote/vote"
             }
             else {
-                alert('Your votes already exist')
+                AlertEvent("Your votes are already exist", "red");
             }
         }
         else {
-            alert('choose your Country');
+            AlertEvent("Choose your country", "red");
         }
+    }
+
+
+    const goSite = () => {
+        setRemoveClass('form-div-remove');
     }
 
 
@@ -76,9 +88,9 @@ const Form = () => {
                 <p>Make Dream!</p>
 
                 <button onClick={voteNow}>Vote Now</button>
-                <NavLink to={'/tvef-vote/vote'} style={{ display: 'none' }}></NavLink>
+                <NavLink to={'/tvef-vote/vote'} style={{ display: continueDisplay, textDecoration: 'none', color: 'rgb(15, 92, 141)', backgroundColor: 'yellow', textAlign: 'center', padding: '13px', fontWeight: '700', borderRadius: '10px' }} onClick={goSite}>Continue</NavLink>
             </form>
-        </div>
+        </div >
     )
 }
 

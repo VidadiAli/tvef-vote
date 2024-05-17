@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { IoMdCloseCircle } from "react-icons/io";
+import { AlertEvent } from '../alert-events/AlertEvent';
 
 const Vote = () => {
+
 
     const [mainData, setMainData] = useState([]);
     const [votingData, setVotingData] = useState([]);
@@ -9,6 +12,8 @@ const Vote = () => {
     const [startRemove, setStartRemove] = useState('');
     const [givinPuans, setGivinPuans] = useState([]);
     const [givenCountry, setGivenCountry] = useState([]);
+    const [showElementClass, setShowElementClass] = useState('');
+    const [pointsArray, setPointsArray] = useState([]);
 
 
     const callData = async () => {
@@ -25,8 +30,11 @@ const Vote = () => {
     }
 
     const addPoint = async (countrypoint) => {
-        await axios.post('https://api-esc.onrender.com/puans', countrypoint)
+        await axios.post('https://api-esc.onrender.com/puans', countrypoint);
+        AlertEvent("Your points saved", "rgb(15, 92, 141)");
     }
+
+
     const givePuan = (e) => {
         if (e.target.textContent == 12) {
             givinPuans.push(12);
@@ -37,52 +45,107 @@ const Vote = () => {
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 12
             }
-            addPoint(countrypoint);
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 10) {
             givinPuans.push(10);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 10
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 8) {
             givinPuans.push(8);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 8
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 7) {
             givinPuans.push(7);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 7
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 6) {
             givinPuans.push(6);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 6
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 5) {
             givinPuans.push(5);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 5
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 4) {
             givinPuans.push(4);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 4
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 3) {
             givinPuans.push(3);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 3
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 2) {
             givinPuans.push(2);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 2
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
         else if (e.target.textContent == 1) {
             givinPuans.push(1);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+                "givinCountry": votingCountry,
+                "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
+                "puan": 1
+            }
+            pointsArray.push(countrypoint);
+            setPointsArray(pointsArray)
         }
 
         const spanList = document.getElementsByTagName('span');
@@ -91,8 +154,6 @@ const Vote = () => {
                 spanList[i].style.display = 'none';
             }
         }
-        console.log(givenCountry)
-        console.log(givinPuans);
 
         setGivinPuans(givinPuans);
         setGivenCountry(givenCountry);
@@ -104,7 +165,51 @@ const Vote = () => {
     }, []);
 
 
+    const showMyVotes = () => {
+        const showList = document.getElementsByClassName('show-list')[0];
+        showList.innerHTML = '';
+        pointsArray.forEach((e) => {
+            const box = document.createElement('div');
+            const country = document.createElement('span');
+            country.textContent = e.getingCountry;
+            const puan = document.createElement('span');
+            puan.textContent = e.puan;
 
+            box.append(country, puan);
+            showList.append(box);
+        })
+        setShowElementClass('show-element');
+    }
+
+    const closePoints = () => {
+        setShowElementClass('');
+    }
+
+    let count1 = 0
+    const sendBaza = async () => {
+        if (pointsArray.length === 10) {
+            const puanData = await (await axios.get('https://api-esc.onrender.com/puans')).data
+            puanData && puanData.forEach((e) => {
+                if (e.givinCountry === pointsArray[0].givinCountry) {
+                    count1++
+                }
+            });
+            if (count1 === 0) {
+                pointsArray.forEach((f) => {
+                    addPoint(f);
+                })
+            }
+            else {
+                AlertEvent("Your votes are already exist", "red");
+            }
+        }
+        else if (pointsArray.length === 0) {
+            AlertEvent("Please, add your votes", "red");
+        }
+        else {
+            AlertEvent("Please, give your points to 10 countries!", "red");
+        }
+    }
 
     return (
 
@@ -115,9 +220,8 @@ const Vote = () => {
             <h1>The Voice Of EuroFans</h1>
             <h3>Your Country: {votingCountry}</h3>
             <h5>
-                <button>reset</button>
-                <button>show my votes</button>
-                <button>Send</button>
+                <button onClick={showMyVotes}>show my votes</button>
+                <button onClick={sendBaza}>Send</button>
             </h5>
             <div>
                 {
@@ -158,6 +262,13 @@ const Vote = () => {
                         }
                     })
                 }
+            </div>
+
+            <div className={`dont-show ${showElementClass}`}>
+                <IoMdCloseCircle onClick={closePoints} className='list-close-icon' />
+                <div className='show-list'>
+
+                </div>
             </div>
         </div>
     )
