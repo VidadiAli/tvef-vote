@@ -17,9 +17,9 @@ const Vote = () => {
 
 
     const callData = async () => {
-        const mainDataArray = (await axios.get('https://api-esc.onrender.com/country')).data;
+        const mainDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/country')).data;
         setMainData(mainDataArray);
-        const votingDataArray = (await axios.get('https://api-esc.onrender.com/voted')).data;
+        const votingDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/voted')).data;
         setVotingData(votingDataArray);
     }
 
@@ -30,7 +30,7 @@ const Vote = () => {
     }
 
     const addPoint = async (countrypoint) => {
-        await axios.post('https://api-esc.onrender.com/puans', countrypoint);
+        await axios.post('https://api-vote-d996cbf031a2.herokuapp.com/puans', countrypoint);
         AlertEvent("Your points saved", "rgb(15, 92, 141)");
     }
 
@@ -188,7 +188,7 @@ const Vote = () => {
     let count1 = 0
     const sendBaza = async () => {
         if (pointsArray.length === 10) {
-            const puanData = await (await axios.get('https://api-esc.onrender.com/puans')).data
+            const puanData = await (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/puans')).data
             puanData && puanData.forEach((e) => {
                 if (e.givinCountry === pointsArray[0].givinCountry) {
                     count1++

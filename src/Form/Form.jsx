@@ -15,14 +15,14 @@ const Form = () => {
     const [continueDisplay, setContinueDisplay] = useState('none')
 
     const callData = async () => {
-        const dataArray = (await axios.get('https://api-esc.onrender.com/country')).data;
+        const dataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/country')).data;
         setData(dataArray);
-        const nameDataArray = (await axios.get('https://api-esc.onrender.com/voted')).data;
+        const nameDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/voted')).data;
         setCountryNameData(nameDataArray);
     }
 
     const addVoted = async (newCountry) => {
-        await axios.post('https://api-esc.onrender.com/voted', newCountry)
+        await axios.post('https://api-vote-d996cbf031a2.herokuapp.com/voted', newCountry)
     }
 
     useEffect(() => {
