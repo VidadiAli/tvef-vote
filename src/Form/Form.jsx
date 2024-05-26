@@ -14,6 +14,7 @@ const Form = () => {
     const [chooseCountry, setChooseCuntry] = useState('');
     const [continueDisplay, setContinueDisplay] = useState('none');
     const [choosenAfter, setChoosenAfter] = useState("");
+    const [votesSystem, setVotesSystem] = useState('')
 
     const callData = async (getData1, getData2) => {
         const dataArray = (await axios.get(getData1)).data;
@@ -70,12 +71,14 @@ const Form = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'juriVote');
         callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
+        setVotesSystem('Juri Votes')
     }
 
     const teleVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'teleVote');
         callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
+        setVotesSystem('Tele Votes')
     }
 
     return (
@@ -89,7 +92,7 @@ const Form = () => {
                 </div>
             </div>
             <h1>The Voice Of EuroFans</h1>
-            <h1>Jury Votes</h1>
+            <h1>{votesSystem}</h1>
             <form>
                 <div>
                     <span>Choose Your Country</span>
