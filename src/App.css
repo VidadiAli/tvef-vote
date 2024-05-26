@@ -80,6 +80,42 @@ section>.form-div {
   padding: 20px;
 }
 
+section>.form-div>.choosen {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 92, 141, .95);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+section>.form-div>.choosen>div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+section>.form-div>.choosen>div>button {
+  background-color: yellow;
+  padding: 10px 20px;
+  color: rgb(15, 92, 141);
+  font-weight: 900;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+section>.form-div>.choosen-after {
+  display: none;
+}
+
 section>.form-div-remove {
   display: none;
 }

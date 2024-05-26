@@ -16,21 +16,41 @@ const Vote = () => {
     const [pointsArray, setPointsArray] = useState([]);
 
 
-    const callData = async () => {
-        const mainDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/country')).data;
+    const callData = async (getData1, getData2) => {
+        const mainDataArray = (await axios.get(getData1)).data;
         setMainData(mainDataArray);
-        const votingDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/voted')).data;
+        const votingDataArray = (await axios.get(getData2)).data;
         setVotingData(votingDataArray);
     }
 
 
-    const start = () => {
-        setVotingCountry(votingData[votingData.length - 1].countryName);
-        setStartRemove('start-remove');
+    const start = async () => {
+        let startArray = [];
+        console.log(votingData)
+        const lastExamplePuans = [];
+        if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+            startArray = (await axios.get('https://us-central1-api-tvef-vote.cloudfunctions.net/app/readPuans')).data;
+        }
+        else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+            startArray = (await axios.get('https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTelePuans')).data;
+        }
+        startArray.forEach((e) => {
+            if (!lastExamplePuans.includes(e.givinCountry)) {
+                lastExamplePuans.push(e.givinCountry);
+            }
+        });
+
+        votingData.forEach((e) => {
+            if (!lastExamplePuans.includes(e.countryName)) {
+                setVotingCountry(e.countryName);
+                setStartRemove('start-remove');
+            }
+        })
+
     }
 
-    const addPoint = async (countrypoint) => {
-        await axios.post('https://api-vote-d996cbf031a2.herokuapp.com/puans', countrypoint);
+    const addPoint = async (addData, countrypoint) => {
+        await axios.post(addData, countrypoint);
         AlertEvent("Your points saved", "rgb(15, 92, 141)");
     }
 
@@ -41,6 +61,7 @@ const Vote = () => {
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
             e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
+                "id": votingCountry + 12,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 12
@@ -51,7 +72,9 @@ const Vote = () => {
         else if (e.target.textContent == 10) {
             givinPuans.push(10);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 10,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 10
@@ -62,7 +85,9 @@ const Vote = () => {
         else if (e.target.textContent == 8) {
             givinPuans.push(8);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 8,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 8
@@ -73,7 +98,9 @@ const Vote = () => {
         else if (e.target.textContent == 7) {
             givinPuans.push(7);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 7,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 7
@@ -84,7 +111,9 @@ const Vote = () => {
         else if (e.target.textContent == 6) {
             givinPuans.push(6);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 6,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 6
@@ -95,7 +124,9 @@ const Vote = () => {
         else if (e.target.textContent == 5) {
             givinPuans.push(5);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 5,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 5
@@ -106,7 +137,9 @@ const Vote = () => {
         else if (e.target.textContent == 4) {
             givinPuans.push(4);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 4,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 4
@@ -117,7 +150,9 @@ const Vote = () => {
         else if (e.target.textContent == 3) {
             givinPuans.push(3);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 3,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 3
@@ -128,7 +163,9 @@ const Vote = () => {
         else if (e.target.textContent == 2) {
             givinPuans.push(2);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 2,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 2
@@ -139,7 +176,9 @@ const Vote = () => {
         else if (e.target.textContent == 1) {
             givinPuans.push(1);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none"; const countrypoint = {
+            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
+            const countrypoint = {
+                "id": votingCountry + 1,
                 "givinCountry": votingCountry,
                 "getingCountry": e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent,
                 "puan": 1
@@ -160,9 +199,12 @@ const Vote = () => {
     }
 
 
-    useEffect(() => {
-        callData();
-    }, []);
+    if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+        callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry')
+    }
+    else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+        callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry')
+    }
 
 
     const showMyVotes = () => {
@@ -188,7 +230,15 @@ const Vote = () => {
     let count1 = 0
     const sendBaza = async () => {
         if (pointsArray.length === 10) {
-            const puanData = await (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/puans')).data
+            let puanData = [];
+
+            if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+                puanData = (await axios.get('https://us-central1-api-tvef-vote.cloudfunctions.net/app/readPuans')).data
+            }
+            else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+                puanData = (await axios.get('https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTelePuans')).data
+            }
+
             puanData && puanData.forEach((e) => {
                 if (e.givinCountry === pointsArray[0].givinCountry) {
                     count1++
@@ -198,7 +248,12 @@ const Vote = () => {
                 const sure = confirm("Are you sure submiting your votes?\nIf you send it, you will can't change it!");
                 if (sure) {
                     pointsArray.forEach((f) => {
-                        addPoint(f);
+                        if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+                            addPoint('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createPuans', f);
+                        }
+                        else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+                            addPoint('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createTelePuans', f);
+                        }
                     })
                 }
                 else {

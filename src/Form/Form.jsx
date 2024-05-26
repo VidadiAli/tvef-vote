@@ -12,22 +12,19 @@ const Form = () => {
     const [countryNamedata, setCountryNameData] = useState([]);
     const [removeClass, setRemoveClass] = useState('');
     const [chooseCountry, setChooseCuntry] = useState('');
-    const [continueDisplay, setContinueDisplay] = useState('none')
+    const [continueDisplay, setContinueDisplay] = useState('none');
+    const [choosenAfter, setChoosenAfter] = useState("");
 
-    const callData = async () => {
-        const dataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/country')).data;
+    const callData = async (getData1, getData2) => {
+        const dataArray = (await axios.get(getData1)).data;
         setData(dataArray);
-        const nameDataArray = (await axios.get('https://api-vote-d996cbf031a2.herokuapp.com/voted')).data;
+        const nameDataArray = (await axios.get(getData2)).data;
         setCountryNameData(nameDataArray);
     }
 
-    const addVoted = async (newCountry) => {
-        await axios.post('https://api-vote-d996cbf031a2.herokuapp.com/voted', newCountry)
+    const addVoted = async (addData, newCountry) => {
+        await axios.post(addData, newCountry)
     }
-
-    useEffect(() => {
-        callData();
-    }, []);
 
 
     let count1 = 0;
@@ -41,10 +38,17 @@ const Form = () => {
             });
             if (count1 === 0) {
                 const element = {
+                    "id": chooseCountry,
                     "countryName": chooseCountry
                 }
                 setContinueDisplay('inline-block');
-                addVoted(element);
+                document.getElementsByClassName('continue')[0].style.display = 'none';
+                if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+                    addVoted('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createVotedCountry', element)
+                }
+                else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+                    addVoted('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createTeleCountry', element)
+                }
             }
             else {
                 AlertEvent("Your votes are already exist", "red");
@@ -62,8 +66,28 @@ const Form = () => {
 
 
 
+    const juriVote = () => {
+        setChoosenAfter('choosen-after');
+        localStorage.setItem('teleJuriChoosen', 'juriVote');
+        callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
+    }
+
+    const teleVote = () => {
+        setChoosenAfter('choosen-after');
+        localStorage.setItem('teleJuriChoosen', 'teleVote');
+        callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
+    }
+
     return (
         <div className={`form-div ${removeClass}`}>
+            <div className={`choosen ${choosenAfter}`}>
+                <h1>Choose voting system: Who are you?</h1>
+                <div>
+                    <button onClick={juriVote}>Juri</button>
+                    <span>or</span>
+                    <button onClick={teleVote}>Tele</button>
+                </div>
+            </div>
             <h1>The Voice Of EuroFans</h1>
             <h1>Jury Votes</h1>
             <form>
@@ -81,7 +105,7 @@ const Form = () => {
 
                 <p>Make Dream!</p>
 
-                <button onClick={voteNow}>Continue</button>
+                <button onClick={voteNow} className='continue'>Continue</button>
                 <NavLink to={'/tvef-vote/vote'} style={{ display: continueDisplay, textDecoration: 'none', color: 'rgb(15, 92, 141)', backgroundColor: 'yellow', textAlign: 'center', padding: '15px', fontWeight: '700', borderRadius: '10px' }} onClick={goSite}>Vote Now</NavLink>
             </form>
         </div >
