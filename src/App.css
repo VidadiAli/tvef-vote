@@ -204,7 +204,7 @@ section>.vote-system>.show-element>div>div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0 10px;
 }
 
 section>.vote-system>.show-element>div>div>span {
@@ -223,11 +223,14 @@ section>.vote-system>.show-element>.list-close-icon {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+  min-height: 35px;
   border-radius: 50%;
   color: white;
   cursor: pointer;
+  z-index: 100000;
 }
 
 section>.vote-system>.start {
@@ -282,13 +285,13 @@ section>.vote-system>div {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  background-color: rgb(15, 92, 141);
+  background-color: rgb(43, 4, 60);
 }
 
 section>.vote-system>div>div {
   display: flex;
   flex-direction: column;
-  background-color: rgb(8, 59, 91);
+  background-color: rgb(20, 111, 168);
   gap: 5px;
 }
 
@@ -306,7 +309,7 @@ section>.vote-system>div>div>.up>.artist {
 
 section>.vote-system>div>div>.up>.artist>img {
   width: 100px;
-  height: 63px;
+  height: 65px;
   object-fit: cover;
 }
 
@@ -337,31 +340,31 @@ section>.vote-system>div>div>.up>.points>.upper {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: rgb(15, 92, 141);
 }
 
 section>.vote-system>div>div>.up>.points>.upper>span {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 22px;
-  height: 22px;
-  background-color: yellow;
+  width: 27px;
+  height: 27px;
+  background-image: linear-gradient(to right, rgb(15, 101, 144), rgb(39, 2, 58));
   border-radius: 50%;
   font-size: .8rem;
   font-weight: 800;
   cursor: pointer;
+  color: white;
 }
 
 section>.vote-system>div>div>.up>.points>.upper>span:nth-child(1) {
-  width: 27px;
-  height: 27px;
-  background-color: rgb(248, 179, 52);
+  width: 32px;
+  height: 30px;
+  background-image: linear-gradient(to right, rgb(46, 105, 135), rgb(39, 7, 143));
 }
 
 section>.vote-system>div>div>.up>.points>.down {
   display: flex;
-  gap: 3px;
+  gap: 4px;
 }
 
 section>.vote-system>div>div>.up>.points>.down>span {
@@ -371,8 +374,8 @@ section>.vote-system>div>div>.up>.points>.down>span {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: yellow;
-  color: rgb(15, 92, 141);
+  background-image: linear-gradient(to right, rgb(33, 141, 196), rgb(84, 15, 118));
+  color: white;
   font-size: .7rem;
   font-weight: 800;
   cursor: pointer;

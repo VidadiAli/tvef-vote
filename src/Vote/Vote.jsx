@@ -59,7 +59,6 @@ const Vote = () => {
         if (e.target.textContent == 12) {
             givinPuans.push(12);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 12,
                 "givinCountry": votingCountry,
@@ -72,7 +71,6 @@ const Vote = () => {
         else if (e.target.textContent == 10) {
             givinPuans.push(10);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 10,
                 "givinCountry": votingCountry,
@@ -85,7 +83,6 @@ const Vote = () => {
         else if (e.target.textContent == 8) {
             givinPuans.push(8);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 8,
                 "givinCountry": votingCountry,
@@ -98,7 +95,6 @@ const Vote = () => {
         else if (e.target.textContent == 7) {
             givinPuans.push(7);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 7,
                 "givinCountry": votingCountry,
@@ -111,7 +107,6 @@ const Vote = () => {
         else if (e.target.textContent == 6) {
             givinPuans.push(6);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 6,
                 "givinCountry": votingCountry,
@@ -124,7 +119,6 @@ const Vote = () => {
         else if (e.target.textContent == 5) {
             givinPuans.push(5);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 5,
                 "givinCountry": votingCountry,
@@ -137,7 +131,6 @@ const Vote = () => {
         else if (e.target.textContent == 4) {
             givinPuans.push(4);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 4,
                 "givinCountry": votingCountry,
@@ -150,7 +143,6 @@ const Vote = () => {
         else if (e.target.textContent == 3) {
             givinPuans.push(3);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 3,
                 "givinCountry": votingCountry,
@@ -163,7 +155,6 @@ const Vote = () => {
         else if (e.target.textContent == 2) {
             givinPuans.push(2);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 2,
                 "givinCountry": votingCountry,
@@ -176,7 +167,6 @@ const Vote = () => {
         else if (e.target.textContent == 1) {
             givinPuans.push(1);
             givenCountry.push(e.target.parentElement.parentElement.previousElementSibling.children[1].children[0].textContent);
-            e.target.parentElement.parentElement.previousElementSibling.parentElement.parentElement.style.display = "none";
             const countrypoint = {
                 "id": votingCountry + 1,
                 "givinCountry": votingCountry,
@@ -272,6 +262,20 @@ const Vote = () => {
         }
     }
 
+
+    const reset = () => {
+        setPointsArray([]);
+        const spanList = document.getElementsByTagName('span');
+        const mainBox = document.getElementsByClassName('main-box');
+        for (let i = 0; i < spanList.length; i++) {
+            spanList[i].style.display = 'flex';
+        }
+        for (let i = 0; i < mainBox.length; i++) {
+            mainBox[i].style.opacity = '1';
+            mainBox[i].style.position = 'static';
+        }
+    }
+
     return (
 
         <div className='vote-system'>
@@ -281,6 +285,7 @@ const Vote = () => {
             <h1>The Voice Of EuroFans</h1>
             <h3>Your Country: {votingCountry}</h3>
             <h5>
+                <button onClick={reset}>reset</button>
                 <button onClick={showMyVotes}>show my votes</button>
                 <button onClick={sendBaza}>Send</button>
             </h5>
@@ -290,14 +295,13 @@ const Vote = () => {
                         if (item.countryName !== votingCountry) {
                             if (!givenCountry.includes(item.countryName)) {
                                 if (item.result) {
-                                    return <div key={item.id}>
+                                    return <div key={item.id} className='main-box'>
                                         <div className='up'>
                                             <div className='artist'>
                                                 <img src={item.flag} alt={`${item.countryName}'s flag`} />
                                                 <div>
                                                     <span>{item.countryName}</span>
                                                     <span>{item.singerName}</span>
-                                                    <span>{item.musicName}</span>
                                                 </div>
                                             </div>
                                             <div className='points' onClick={givePuan}>

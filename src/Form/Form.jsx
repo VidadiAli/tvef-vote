@@ -78,7 +78,7 @@ const Form = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'teleVote');
         callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
-        setVotesSystem('Tele Votes')
+        setVotesSystem('Public Votes')
     }
 
     return (
@@ -88,7 +88,7 @@ const Form = () => {
                 <div>
                     <button onClick={juriVote}>Juri</button>
                     <span>or</span>
-                    <button onClick={teleVote}>Tele</button>
+                    <button onClick={teleVote}>Public</button>
                 </div>
             </div>
             <h1>The Voice Of EuroFans</h1>
