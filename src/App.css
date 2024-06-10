@@ -83,7 +83,7 @@ section>.form-div {
 section>.form-div>.choosen {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   top: 0;
   left: 0;
   background-color: rgba(15, 92, 141, .95);
@@ -93,6 +93,11 @@ section>.form-div>.choosen {
   align-items: center;
   flex-direction: column;
   color: white;
+  padding: 10px 20px;
+}
+
+section>.form-div>.choosen>h1 {
+  text-align: center;
 }
 
 section>.form-div>.choosen>div {

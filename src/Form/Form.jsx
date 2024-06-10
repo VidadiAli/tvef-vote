@@ -71,7 +71,7 @@ const Form = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'juriVote');
         callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
-        setVotesSystem('Juri Votes')
+        setVotesSystem('Jury Votes')
     }
 
     const teleVote = () => {
@@ -86,9 +86,9 @@ const Form = () => {
             <div className={`choosen ${choosenAfter}`}>
                 <h1>Choose voting system: Who are you?</h1>
                 <div>
-                    <button onClick={juriVote}>Juri</button>
-                    <span>or</span>
-                    <button onClick={teleVote}>Public</button>
+                    <button onClick={juriVote}>Jury</button>
+                    {/* <span>or</span> */}
+                    <button onClick={teleVote} style={{ display: 'none' }}>Public</button>
                 </div>
             </div>
             <h1>The Voice Of EuroFans</h1>
