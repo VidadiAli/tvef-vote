@@ -23,9 +23,7 @@ const Form = () => {
         setCountryNameData(nameDataArray);
     }
 
-    const addVoted = async (addData, newCountry) => {
-        await axios.post(addData, newCountry)
-
+    const addVoted = async (newCountry) => {
         localStorage.setItem("countryName", newCountry.countryName);
     }
 
@@ -47,10 +45,10 @@ const Form = () => {
                 setContinueDisplay('inline-block');
                 document.getElementsByClassName('continue')[0].style.display = 'none';
                 if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
-                    addVoted('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createVotedCountry', element)
+                    addVoted(element)
                 }
                 else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
-                    addVoted('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createTeleCountry', element)
+                    addVoted(element)
                 }
             }
             else {

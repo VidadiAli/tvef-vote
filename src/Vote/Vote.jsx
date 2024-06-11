@@ -54,8 +54,26 @@ const Vote = () => {
         setStartRemove('start-remove');
     }
 
+
+    const addCountry = async (addData, newCountry) => {
+        await axios.post(addData, newCountry)
+    }
+
     const addPoint = async (addData, countrypoint) => {
         await axios.post(addData, countrypoint);
+
+        const element = {
+            "id": localStorage.getItem("countryName"),
+            "countryName": localStorage.getItem("countryName")
+        }
+
+        if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
+            addCountry('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createVotedCountry', element)
+        }
+        else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
+            addCountry('https://us-central1-api-tvef-vote.cloudfunctions.net/app/createTeleCountry', element)
+        }
+
         AlertEvent("Your points saved", "rgb(15, 92, 141)");
         document.getElementsByClassName('reset')[0].style.display = 'none';
     }
