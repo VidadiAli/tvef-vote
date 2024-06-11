@@ -25,6 +25,8 @@ const Form = () => {
 
     const addVoted = async (addData, newCountry) => {
         await axios.post(addData, newCountry)
+
+        localStorage.setItem("countryName", newCountry.countryName);
     }
 
 
