@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { IoMdCloseCircle } from "react-icons/io";
 import { AlertEvent } from '../alert-events/AlertEvent';
-import mainVideo from '../videos/recap.mp4'
+//import mainVideo from '../videos/recap.mp4'
 
 const Vote = () => {
 
@@ -15,7 +15,7 @@ const Vote = () => {
     const [showElementClass, setShowElementClass] = useState('');
     const [pointsArray, setPointsArray] = useState([]);
 
-    const [stopVideo, setStopVideo] = useState('')
+    //const [stopVideo, setStopVideo] = useState('')
 
 
     const callData = async (getData1, getData2) => {
@@ -199,17 +199,17 @@ const Vote = () => {
     }
 
 
-    setTimeout(() => {
-        setStopVideo('stop-voting-video')
-    }, 502000)
+    // setTimeout(() => {
+    //     setStopVideo('stop-voting-video')
+    // }, 502000)
 
     return (
 
         <div className='vote-system'>
-            <div className={`voting-video ${stopVideo}`}>
+            {/* <div className={`voting-video ${stopVideo}`}>
                 <h1>You will be able to vote after the video ends. Watch till the end and submit your votes</h1>
                 <video src={mainVideo} autoPlay></video>
-            </div>
+            </div> */}
             <div className={`start ${startRemove}`}>
                 <button onClick={start}>start</button>
             </div>
