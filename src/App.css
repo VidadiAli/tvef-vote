@@ -266,6 +266,34 @@ section>.vote-system>.start>button {
   cursor: pointer;
 }
 
+section>.vote-system>.voting-video {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(15, 101, 144, .8);
+  z-index: 100000;
+  position: fixed;
+  top: 0;
+}
+
+section>.vote-system>.voting-video>h1 {
+  color: white;
+  text-align: center;
+}
+
+section>.vote-system>.voting-video>video {
+  width: 70%;
+  height: auto;
+}
+
+section>.vote-system>.stop-voting-video {
+  display: none;
+}
+
 section>.vote-system>h1,
 h3,
 h5 {
