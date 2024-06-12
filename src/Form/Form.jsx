@@ -15,12 +15,15 @@ const Form = () => {
     const [continueDisplay, setContinueDisplay] = useState('none');
     const [choosenAfter, setChoosenAfter] = useState("");
     const [votesSystem, setVotesSystem] = useState('')
+    const [waitClass, setWaitClass] = useState('');
 
     const callData = async (getData1, getData2) => {
+        setWaitClass('wait-vote-adding')
         const dataArray = (await axios.get(getData1)).data;
         setData(dataArray);
         const nameDataArray = (await axios.get(getData2)).data;
         setCountryNameData(nameDataArray);
+        setWaitClass('');
     }
 
     const addVoted = async (newCountry) => {
@@ -83,6 +86,9 @@ const Form = () => {
 
     return (
         <div className={`form-div ${removeClass}`}>
+            <div className={`wait-vote ${waitClass}`}>
+                <button >please wait ...</button>
+            </div>
             <div className={`choosen ${choosenAfter}`}>
                 <h1>Choose voting system: Who are you?</h1>
                 <div>
