@@ -474,13 +474,14 @@ section>.vote-system>div>div>.up>.points>.down>span {
   border: none;
   font-weight: 900;
   transition: .5s;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
+  width: 90px;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
-  z-index: 2;
-  background-color: rgb(39, 2, 58);
+  background-color: rgb(76, 63, 225);
+  word-wrap: break-word;
 }
 
 .wait-vote>button::after {
@@ -492,7 +493,7 @@ section>.vote-system>div>div>.up>.points>.down>span {
   top: 0;
   left: 0;
   animation: wait-circle 1s infinite linear reverse;
-  background-image: linear-gradient(rgb(65, 105, 225), rgb(2, 57, 118));
+  background-image: linear-gradient(rgb(65, 105, 225), rgb(3, 34, 69));
   border-radius: 50%;
   z-index: -1;
 }
