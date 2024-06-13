@@ -21,7 +21,7 @@ const Form = () => {
     const callData = async (getData1, getData2) => {
 
         const date = new Date();
-        if (Number(`${(date.getHours())}` + `${(date.getMinutes())}`) >= 2010) {
+        if (Number(`${(date.getHours())}` + `${(date.getMinutes())}`) >= 1959) {
             setCloseSystem('close-system-now');
         }
 
