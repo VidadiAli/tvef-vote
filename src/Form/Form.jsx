@@ -16,8 +16,16 @@ const Form = () => {
     const [choosenAfter, setChoosenAfter] = useState("");
     const [votesSystem, setVotesSystem] = useState('')
     const [waitClass, setWaitClass] = useState('');
+    const [closeSystem, setCloseSystem] = useState('');
 
     const callData = async (getData1, getData2) => {
+
+        const date = new Date();
+        if (Number(`${(date.getHours())}` + `${(date.getMinutes())}`) >= 2010) {
+            setCloseSystem('close-system-now');
+        }
+
+
         setWaitClass('wait-vote-adding')
         const dataArray = (await axios.get(getData1)).data;
         setData(dataArray);
@@ -84,10 +92,15 @@ const Form = () => {
         setVotesSystem('Public Votes')
     }
 
+
     return (
         <div className={`form-div ${removeClass}`}>
             <div className={`wait-vote ${waitClass}`}>
                 <button >please wait ...</button>
+            </div>
+
+            <div className={`close-system ${closeSystem}`}>
+                <span>Voting Time Is Over</span>
             </div>
             <div className={`choosen ${choosenAfter}`}>
                 <h1>Choose voting system: Who are you?</h1>

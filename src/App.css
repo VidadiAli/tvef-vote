@@ -453,6 +453,30 @@ section>.vote-system>div>div>.up>.points>.down>span {
 
 
 
+.close-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(15, 101, 144);
+  z-index: 1000000;
+}
+
+.close-system>span {
+  padding: 15px 25px;
+  color: rgb(15, 101, 144);
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 900;
+}
+
+.close-system-now {
+  display: flex;
+}
 
 
 .wait-vote {
