@@ -20,12 +20,6 @@ const Form = () => {
     const [realTime, setRealTime] = useState('');
 
     const callData = async (getData1, getData2) => {
-
-        const date = new Date();
-        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135) {
-            setCloseSystem('close-system-now');
-        }
-
         setWaitClass('wait-vote-adding')
         const dataArray = (await axios.get(getData1)).data;
         setData(dataArray);
@@ -91,18 +85,27 @@ const Form = () => {
     }
 
 
-    const date = new Date();
     let timer;
 
     useEffect(() => {
-        timer = setInterval(() => {
-            setRealTime(`next - ${18 - date.getDate()} days 
-            ${23 - date.getHours()} : 
-            ${date.getMinutes() <= 50 ? (60 - date.getMinutes() === 60 ? '00' : 60 - date.getMinutes()) : '0' + (60 - date.getMinutes())} : 
-            ${date.getSeconds() <= 50 ? (60 - date.getSeconds() === 60 ? '00' : 60 - date.getSeconds()) : '0' + (60 - date.getSeconds())}`)
-        }, 1000)
 
-        return () => clearInterval(timer)
+        const date = new Date();
+        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}`) <= 175) {
+            setCloseSystem('close-system-now');
+
+            timer = setInterval(() => {
+                setRealTime(`next - ${18 - date.getDate()} days 
+                ${23 - date.getHours()} : 
+                ${date.getMinutes() <= 50 ? (60 - date.getMinutes() === 60 ? '00' : 60 - date.getMinutes()) : '0' + (60 - date.getMinutes())} : 
+                ${date.getSeconds() <= 50 ? (60 - date.getSeconds() === 60 ? '00' : 60 - date.getSeconds()) : '0' + (60 - date.getSeconds())}`)
+            }, 1000)
+
+            return () => clearInterval(timer)
+        }
+
+        else {
+            setCloseSystem('');
+        }
     })
 
 
