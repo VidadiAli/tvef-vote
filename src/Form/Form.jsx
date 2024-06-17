@@ -90,12 +90,12 @@ const Form = () => {
     useEffect(() => {
 
         const date = new Date();
-        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}`) <= 185) {
+        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}`) <= 185 || Number(date.getHours()) > 20) {
             setCloseSystem('close-system-now');
 
             timer = setInterval(() => {
-                setRealTime(`next - 
-                ${23 - date.getHours()} : 
+                setRealTime(`next - ${(18 - date.getDate()) > 0 ? 18 - date.getDate() : ''} 
+                ${20 - date.getHours()} : 
                 ${date.getMinutes() <= 50 ? (60 - date.getMinutes() === 60 ? '00' : 60 - date.getMinutes()) : '0' + (60 - date.getMinutes())} : 
                 ${date.getSeconds() <= 50 ? (60 - date.getSeconds() === 60 ? '00' : 60 - date.getSeconds()) : '0' + (60 - date.getSeconds())}`)
             }, 1000)
