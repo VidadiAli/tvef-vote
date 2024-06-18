@@ -95,7 +95,7 @@ const Form = () => {
         date.getHours() < 10 ? hourse = `0${date.getHours()}` : hourse = date.getHours()
         date.getMinutes() < 10 ? minutes = `0${date.getMinutes()}` : minutes = date.getMinutes();
 
-        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}${hourse}${minutes}`) <= 1852059) {
+        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}${hourse}${minutes}`) <= 1852130) {
             setCloseSystem('close-system-now');
 
             timer = setInterval(() => {
