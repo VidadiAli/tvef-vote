@@ -90,13 +90,18 @@ const Form = () => {
     useEffect(() => {
 
         const date = new Date();
-        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}`) <= 185 || Number(date.getHours()) > 20) {
+        let hourse = 0, minutes = 0;
+
+        date.getHours() < 10 ? hourse = `0${date.getHours()}` : hourse = date.getHours()
+        date.getMinutes() < 10 ? minutes = `0${date.getMinutes()}` : minutes = date.getMinutes();
+
+        if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}${hourse}${minutes}`) <= 1852059) {
             setCloseSystem('close-system-now');
 
             timer = setInterval(() => {
                 setRealTime(`next - ${(18 - date.getDate()) > 0 ? 18 - date.getDate() : ''} 
                 ${20 - date.getHours()} : 
-                ${date.getMinutes() <= 50 ? (60 - date.getMinutes() === 60 ? '00' : 60 - date.getMinutes()) : '0' + (60 - date.getMinutes())} : 
+                ${date.getMinutes() <= 50 ? (59 - date.getMinutes() === 59 ? '00' : 59 - date.getMinutes()) : '0' + (59 - date.getMinutes())} : 
                 ${date.getSeconds() <= 50 ? (60 - date.getSeconds() === 60 ? '00' : 60 - date.getSeconds()) : '0' + (60 - date.getSeconds())}`)
             }, 1000)
 
