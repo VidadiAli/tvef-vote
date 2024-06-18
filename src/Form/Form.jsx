@@ -96,7 +96,7 @@ const Form = () => {
         date.getMinutes() < 10 ? minutes = `0${date.getMinutes()}` : minutes = date.getMinutes();
 
         if (Number(`${(date.getDate())}${(date.getMonth())}`) >= 135 && Number(`${(date.getDate())}${(date.getMonth())}${hourse}${minutes}`) <= 1852130) {
-            setCloseSystem('close-system-now');
+            setCloseSystem('');
 
             timer = setInterval(() => {
                 setRealTime(`next - ${(18 - date.getDate()) > 0 ? 18 - date.getDate() : ''} 
