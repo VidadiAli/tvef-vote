@@ -197,10 +197,10 @@ const Vote = () => {
             <div className={`display-video ${displayVideo}`}>
                 <button onClick={watched}>I watched video</button>
             </div>
-            {/* <div className={`voting-video ${stopVideo}`}>
+            <div className={`voting-video ${stopVideo}`}>
                 <h1>You will be able to vote after the video ends. Watch till the end and submit your votes</h1>
                 <video src={mainVideo} autoPlay></video>
-            </div> */}
+            </div>
             <div className={`start ${startRemove}`}>
                 <button onClick={start}>start</button>
             </div>
