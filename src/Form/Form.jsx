@@ -101,7 +101,7 @@ const Form = () => {
             timer = setInterval(() => {
                 setRealTime(`next - ${(18 - date.getDate()) > 0 ? 18 - date.getDate() : ''} 
                 ${21 - date.getHours()} : 
-                ${date.getMinutes() <= 50 ? (59 - date.getMinutes() === 59 ? '00' : 59 - date.getMinutes()) : '0' + (59 - date.getMinutes())} : 
+                ${date.getMinutes() <= 50 ? (59 - date.getMinutes() === 59 ? '00' : 59 - date.getMinutes() - 30) : '0' + (59 - date.getMinutes())} : 
                 ${date.getSeconds() <= 50 ? (60 - date.getSeconds() === 60 ? '00' : 60 - date.getSeconds()) : '0' + (60 - date.getSeconds())}`)
             }, 1000)
 
