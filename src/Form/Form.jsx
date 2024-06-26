@@ -74,14 +74,14 @@ const Form = () => {
     const juriVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'juriVote');
-        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/edition9', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
         setVotesSystem('Jury Votes')
     }
 
     const teleVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'teleVote');
-        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/edition9', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
         setVotesSystem('Public Votes')
     }
 
@@ -115,36 +115,20 @@ const Form = () => {
     })
 
 
-    let mainTime;
-    useEffect(() => {
-        let time1 = 1, time2 = 59;
-        mainTime = setInterval(() => {
-            document.getElementsByClassName('time')[0].textContent = `about: ${time1}:${time2}`;
-            time2 -= 1;
-            if (time2 === 0) {
-                time1 = 0;
-                time2 = 59;
-            }
-        }, 1000)
-
-        return () => clearInterval(mainTime)
-    })
-
-
-
-
     return (
         <div className={`form-div ${removeClass}`}>
             <div className={`wait-vote ${waitClass}`}>
                 <button >please wait ...</button>
-                <button className='time'></button>
             </div>
 
             <div className={`close-system ${closeSystem}`}>
                 <span>{realTime}</span>
             </div>
             <div className={`choosen ${choosenAfter}`}>
-                <h1>Choose voting system: Who are you?</h1>
+                <h1>
+                    Welocome to the Grand Final <br /> <br />
+                    Choose voting system: Who are you?
+                </h1>
                 <div>
                     <button onClick={juriVote}>Jury</button>
                     <span>or</span>
