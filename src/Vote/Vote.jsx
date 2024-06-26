@@ -19,9 +19,14 @@ const Vote = () => {
     const [displayVideo, setDisplayVideo] = useState('')
 
 
-    const callData = async (getData1, getData2) => {
+    const callData = async (getData1, data1, getData2) => {
         const mainDataArray = (await axios.get(getData1)).data;
-        setMainData(mainDataArray);
+        if (data1 === 'country') {
+            setMainData(mainDataArray.country);
+        }
+        else if (data1 === 'countryTele') {
+            setMainData(mainDataArray.countryTele);
+        }
         const votingDataArray = (await axios.get(getData2)).data;
         setVotingData(votingDataArray);
     }
