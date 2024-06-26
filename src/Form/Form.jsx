@@ -19,15 +19,10 @@ const Form = () => {
     const [closeSystem, setCloseSystem] = useState('');
     const [realTime, setRealTime] = useState('');
 
-    const callData = async (getData1, data1, getData2) => {
+    const callData = async (getData1, getData2) => {
         setWaitClass('wait-vote-adding')
         const dataArray = ((await axios.get(getData1)).data);
-        if (data1 === 'country') {
-            setData(dataArray.country);
-        }
-        else if (data1 === 'countryTele') {
-            setData(dataArray.countryTele);
-        }
+        setData(dataArray.final);
 
         const nameDataArray = (await axios.get(getData2)).data;
         setCountryNameData(nameDataArray);
@@ -79,14 +74,14 @@ const Form = () => {
     const juriVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'juriVote');
-        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
         setVotesSystem('Jury Votes')
     }
 
     const teleVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'teleVote');
-        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'countryTele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
         setVotesSystem('Public Votes')
     }
 
