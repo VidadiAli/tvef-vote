@@ -91,10 +91,10 @@ const Vote = () => {
 
 
     if (localStorage.getItem('teleJuriChoosen') === 'juriVote') {
-        callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry')
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry')
     }
     else if (localStorage.getItem('teleJuriChoosen') === 'teleVote') {
-        callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry')
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'countryTele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry')
     }
 
 

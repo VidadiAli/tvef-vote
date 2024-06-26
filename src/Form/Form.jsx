@@ -19,10 +19,16 @@ const Form = () => {
     const [closeSystem, setCloseSystem] = useState('');
     const [realTime, setRealTime] = useState('');
 
-    const callData = async (getData1, getData2) => {
+    const callData = async (getData1, data1, getData2) => {
         setWaitClass('wait-vote-adding')
-        const dataArray = (await axios.get(getData1)).data;
-        setData(dataArray);
+        const dataArray = ((await axios.get(getData1)).data);
+        if (data1 === 'country') {
+            setData(dataArray.country);
+        }
+        else if (data1 === 'countryTele') {
+            setData(dataArray.countryTele);
+        }
+
         const nameDataArray = (await axios.get(getData2)).data;
         setCountryNameData(nameDataArray);
         setWaitClass('');
@@ -73,14 +79,14 @@ const Form = () => {
     const juriVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'juriVote');
-        callData('https://api-esc.onrender.com/country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'country', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readVotedCountry');
         setVotesSystem('Jury Votes')
     }
 
     const teleVote = () => {
         setChoosenAfter('choosen-after');
         localStorage.setItem('teleJuriChoosen', 'teleVote');
-        callData('https://api-esc.onrender.com/country-tele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
+        callData('https://us-central1-api-tvef-vote.cloudfunctions.net/app/votingCountry', 'countryTele', 'https://us-central1-api-tvef-vote.cloudfunctions.net/app/readTeleCountry');
         setVotesSystem('Public Votes')
     }
 
@@ -114,10 +120,29 @@ const Form = () => {
     })
 
 
+    let mainTime;
+    useEffect(() => {
+        let time1 = 1, time2 = 59;
+        mainTime = setInterval(() => {
+            document.getElementsByClassName('time')[0].textContent = `about: ${time1}:${time2}`;
+            time2 -= 1;
+            if (time2 === 0) {
+                time1 = 0;
+                time2 = 59;
+            }
+        }, 1000)
+
+        return () => clearInterval(mainTime)
+    })
+
+
+
+
     return (
         <div className={`form-div ${removeClass}`}>
             <div className={`wait-vote ${waitClass}`}>
                 <button >please wait ...</button>
+                <button className='time'></button>
             </div>
 
             <div className={`close-system ${closeSystem}`}>
@@ -127,8 +152,8 @@ const Form = () => {
                 <h1>Choose voting system: Who are you?</h1>
                 <div>
                     <button onClick={juriVote}>Jury</button>
-                    {/* <span>or</span> */}
-                    <button onClick={teleVote} style={{ display: 'none' }}>Public</button>
+                    <span>or</span>
+                    <button onClick={teleVote}>Public</button>
                 </div>
             </div>
             <h1>The Voice Of EuroFans</h1>

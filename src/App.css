@@ -489,9 +489,21 @@ section>.vote-system>div>div>.up>.points>.down>span {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
+  flex-direction: column;
+  gap: 10px;
 }
 
-.wait-vote>button {
+.wait-vote>button:nth-child(2) {
+  background-color: rgb(76, 63, 225);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: 800;
+  border: none;
+  outline: none;
+}
+
+.wait-vote>button:nth-child(1) {
   border-radius: 50%;
   color: white;
   outline: none;
@@ -508,7 +520,7 @@ section>.vote-system>div>div>.up>.points>.down>span {
   word-wrap: break-word;
 }
 
-.wait-vote>button::after {
+.wait-vote>button:nth-child(1)::after {
   content: '';
   width: 100%;
   height: 100%;
