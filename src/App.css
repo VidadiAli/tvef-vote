@@ -1,0 +1,554 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+section>.this-alert {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: rgb(15, 92, 141);
+  padding: 15px 20px;
+  border: 1px solid lightgray;
+  z-index: 1000000;
+  width: 70%;
+  animation: this-a alternate linear;
+  animation-duration: .2s;
+  animation-delay: 3.3s;
+  opacity: 1;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+@keyframes this-a {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+section>.this-alert::after {
+  content: '';
+  background-color: rgb(15, 92, 141);
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: alert-event alternate-reverse 3.5s linear;
+  transition: 3.5s;
+}
+
+@keyframes alert-event {
+  from {
+    width: 100%;
+    right: 0%;
+  }
+
+  to {
+    width: 0%;
+    right: 100%;
+  }
+}
+
+
+section>.form-div {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  width: calc(100% - 20px);
+  background-color: yellow;
+  z-index: 100000;
+  border-radius: 10px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+section>.form-div>.choosen {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 60px);
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 92, 141, .95);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 10px 20px;
+}
+
+section>.form-div>.choosen>h1 {
+  text-align: center;
+}
+
+section>.form-div>.choosen>div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+section>.form-div>.choosen>div>button {
+  background-color: yellow;
+  padding: 10px 20px;
+  color: rgb(15, 92, 141);
+  font-weight: 900;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+section>.form-div>.choosen-after {
+  display: none;
+}
+
+section>.form-div-remove {
+  display: none;
+}
+
+section>.form-div>h1 {
+  color: rgb(15, 92, 141);
+}
+
+section>.form-div>form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(15, 92, 141);
+  border-radius: 15px;
+  padding: 30px;
+  width: 300px;
+}
+
+section>.form-div>form>div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: white;
+  font-weight: 800;
+}
+
+section>.form-div>form>div>select {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+section>.form-div>form>p {
+  color: white;
+  font-weight: 900;
+}
+
+section>.form-div>form>button {
+  background-color: yellow;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgb(15, 92, 141);
+  animation: btn infinite 1.5s alternate-reverse;
+}
+
+
+
+section>.vote-system {
+  margin-top: 50px;
+  width: 100%;
+  background-color: yellow;
+  padding: 10px 0 0;
+  z-index: 10000;
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+section>.vote-system>.dont-show {
+  display: none;
+}
+
+section>.vote-system>.show-element {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: calc(100vh - 20px);
+  width: calc(100% - 20px);
+  background-color: rgb(15, 92, 141);
+  justify-content: center;
+  padding: 40px 10px;
+}
+
+section>.vote-system>.show-element>div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section>.vote-system>.show-element>div>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+section>.vote-system>.show-element>div>div>span {
+  color: rgb(15, 92, 141);
+  background-color: yellow;
+  padding: 10px 0;
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+section>.vote-system>.show-element>.list-close-icon {
+  position: relative;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+  min-height: 35px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  z-index: 100000;
+}
+
+section>.vote-system>.start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255, .6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-top: 200px;
+  align-items: center;
+  z-index: 10000;
+}
+
+section>.vote-system>.start-remove {
+  display: none;
+}
+
+section>.vote-system>.start>button {
+  border: none;
+  outline: none;
+  background-color: rgb(15, 92, 141);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+section>.vote-system>.voting-video {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(15, 101, 144, .8);
+  z-index: 100000;
+  position: fixed;
+  top: 0;
+}
+
+section>.vote-system>.voting-video>h1 {
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+}
+
+section>.vote-system>.voting-video>video {
+  width: 70%;
+  height: auto;
+}
+
+section>.vote-system>.stop-voting-video {
+  display: none;
+}
+
+section>.vote-system>.display-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+}
+
+section>.vote-system>.display-voting-video {
+  display: flex;
+}
+
+section>.vote-system>.display-video>button {
+  padding: 10px 20px;
+  background-color: rgb(15, 101, 144);
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+section>.vote-system>h1,
+h3,
+h5 {
+  color: rgb(15, 92, 141);
+  padding: 0 10px;
+  margin: 0;
+  display: flex;
+  gap: 5px;
+}
+
+section>.vote-system>h5>button {
+  background-color: rgb(15, 92, 141);
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+section>.vote-system>div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: rgb(43, 4, 60);
+}
+
+section>.vote-system>div>div {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(20, 111, 168);
+  gap: 5px;
+}
+
+section>.vote-system>div>div>.up {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section>.vote-system>div>div>.up>.artist {
+  display: flex;
+  gap: 5px;
+}
+
+section>.vote-system>div>div>.up>.artist>img {
+  width: 100px;
+  height: 65px;
+  object-fit: cover;
+}
+
+section>.vote-system>div>div>.up>.artist>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  color: lightgray;
+  font-size: .8rem;
+  width: 90px;
+}
+
+section>.vote-system>div>div>.up>.artist>div>span:nth-child(1) {
+  font-weight: 700;
+  color: white;
+}
+
+section>.vote-system>div>div>.up>.points {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  padding: 5px;
+}
+
+section>.vote-system>div>div>.up>.points>.upper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+section>.vote-system>div>div>.up>.points>.upper>span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  background-image: linear-gradient(to right, rgb(15, 101, 144), rgb(39, 2, 58));
+  border-radius: 50%;
+  font-size: .8rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: white;
+}
+
+section>.vote-system>div>div>.up>.points>.upper>span:nth-child(1) {
+  width: 32px;
+  height: 30px;
+  background-image: linear-gradient(to right, rgb(46, 105, 135), rgb(39, 7, 143));
+}
+
+section>.vote-system>div>div>.up>.points>.down {
+  display: flex;
+  gap: 4px;
+}
+
+section>.vote-system>div>div>.up>.points>.down>span {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-image: linear-gradient(to right, rgb(33, 141, 196), rgb(84, 15, 118));
+  color: white;
+  font-size: .7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+
+@keyframes btn {
+  from {
+    background-color: yellow;
+  }
+
+  to {
+    background-color: rgb(240, 249, 162);
+  }
+}
+
+
+
+.close-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(15, 101, 144);
+  z-index: 1000000;
+}
+
+.close-system>span {
+  padding: 15px 25px;
+  color: rgb(15, 101, 144);
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 900;
+}
+
+.close-system-now {
+  display: flex;
+}
+
+
+.wait-vote {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.wait-vote>button {
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 900;
+  transition: .5s;
+  width: 90px;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background-color: rgb(76, 63, 225);
+  word-wrap: break-word;
+}
+
+.wait-vote>button::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  scale: 1.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: wait-circle 1s infinite linear reverse;
+  background-image: linear-gradient(rgb(65, 105, 225), rgb(3, 34, 69));
+  border-radius: 50%;
+  z-index: -1;
+}
+
+
+@keyframes wait-circle {
+  from {
+    rotate: 360deg;
+  }
+
+  to {
+    rotate: 0deg;
+  }
+}
+
+.wait-vote-adding {
+  display: flex;
+  z-index: 1000;
+}
+
+
+
+
+
+@media(max-width: 380px) {
+  section>.vote-system>div>div>.up>.points>.down>span {
+    width: 18px;
+    height: 18px;
+  }
+}
